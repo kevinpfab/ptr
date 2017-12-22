@@ -1,5 +1,24 @@
-// Package ptr provides small helper functions for interacting with pointers of basic types safely and inline.
-// TODO: examples here
+// Package ptr provides small helper functions for working with pointers of basic types inline.
+//
+// For example, you can write...
+//     phone := struct{Price *float32}{
+//         Price: ptr.Float32(5.00),
+//     }
+// instead of having to set a basic literal to a variable...
+//     price := 5.00
+//     phone := struct{Price *float32}{
+//         Price: &price,
+//     }
+//
+// It also exposes a function to safely get the string representation of the underlying value of a pointer.
+//     var name *string
+//     fmt.Println(ptr.S(name))
+//     // Output: <nil>
+//
+//     michael := "Michael Scott"
+//     name = &michael
+//     fmt.Println(ptr.S(name))
+//     // Output: Michael Scott
 package ptr
 
 import "time"
