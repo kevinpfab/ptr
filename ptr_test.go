@@ -248,3 +248,19 @@ func TestTime(t *testing.T) {
 		}
 	}
 }
+
+func TestDuration(t *testing.T) {
+	for _, tm := range []time.Duration{
+		5 * time.Millisecond,
+		10 * time.Second,
+		15 * time.Minute,
+	} {
+		p := Duration(tm)
+		if p == nil {
+			t.Fatalf("expected %v, got <nil>", tm)
+		}
+		if tm != *p {
+			t.Fatalf("expected %v, got %v", tm, *p)
+		}
+	}
+}

@@ -10,7 +10,16 @@
 //         Price: &price,
 //     }
 //
-// It also exposes a function to safely get the string representation of the underlying value of a pointer.
+// There are functions to dereference pointer values and define a default value if the pointer is nil.
+//     var name *string
+//     fmt.Println(ptr.DString(name, "default"))
+//     // Output: "default"
+//
+//     var val *int = ptr.Int(42)
+//     fmt.Println(ptr.DInt(val, 10))
+//     // Output: 42
+//
+// There is also a function to safely get the string representation of the underlying value of a pointer.
 //     var name *string
 //     fmt.Println(ptr.S(name))
 //     // Output: <nil>
@@ -19,6 +28,7 @@
 //     name = &michael
 //     fmt.Println(ptr.S(name))
 //     // Output: Michael Scott
+//
 package ptr
 
 import "time"
@@ -121,4 +131,9 @@ func Complex128(c complex128) *complex128 {
 // Time returns a pointer to the input time.Time.
 func Time(t time.Time) *time.Time {
 	return &t
+}
+
+// Duration returns a pointer to the input time.Duration.
+func Duration(d time.Duration) *time.Duration {
+	return &d
 }
