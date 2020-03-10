@@ -90,7 +90,7 @@ func TestS_Nil(t *testing.T) {
 	}
 	
 	var s *string
-	if S(s) != "<nil"> {
+	if S(s) != "<nil>" {
 		t.Errorf("S(<nil string>) = \"%v\", want \"<nil>\"", S(s))
 	}
 }
