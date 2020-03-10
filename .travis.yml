@@ -1,8 +1,8 @@
 language: go
 
 go:
-  - 1.8
-  - 1.9
+  - 1.13
+  - 1.14
 
 before_script:
   - go get github.com/kevinpfab/ptr
