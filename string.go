@@ -15,6 +15,10 @@ func S(v interface{}) string {
 	item := reflect.ValueOf(v)
 	if item.Kind() == reflect.Ptr {
 		item = item.Elem()
+
+		if !item.IsValid() {
+			return fmt.Sprint(nil)
+		}
 	}
 
 	return fmt.Sprint(item)
