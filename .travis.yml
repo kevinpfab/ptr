@@ -4,7 +4,4 @@ go:
   - 1.13
   - 1.14
 
-before_script:
-  - go get github.com/kevinpfab/ptr
-
 script: go test -v ./...
