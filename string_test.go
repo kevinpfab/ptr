@@ -88,9 +88,17 @@ func TestS_Nil(t *testing.T) {
 	if S(nil) != "<nil>" {
 		t.Errorf("S(nil) = \"%v\", want \"<nil>\"", S(nil))
 	}
-	
+
 	var s *string
 	if S(s) != "<nil>" {
 		t.Errorf("S(<nil string>) = \"%v\", want \"<nil>\"", S(s))
+	}
+}
+
+func TestS_InterfacePointer(t *testing.T) {
+	name := "Dwight"
+	var val interface{} = &name
+	if res := S(&val); res != name {
+		t.Errorf("S(&interface{pointer}) = %q, want %q", res, name)
 	}
 }
