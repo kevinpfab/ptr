@@ -13,13 +13,12 @@ func S(v interface{}) string {
 	}
 
 	item := reflect.ValueOf(v)
-	if item.Kind() == reflect.Ptr {
-		item = item.Elem()
-
-		if !item.IsValid() {
+	for item.Kind() == reflect.Ptr || item.Kind() == reflect.Interface {
+		if item.IsNil() {
 			return fmt.Sprint(nil)
 		}
+		item = item.Elem()
 	}
 
-	return fmt.Sprint(item)
+	return fmt.Sprint(item.Interface())
 }
